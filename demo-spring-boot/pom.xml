@@ -4,21 +4,20 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.csc.spring</groupId>
-        <artifactId>csc-spring-boot-starter</artifactId>
+        <artifactId>spring-util</artifactId>
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>csc-spring-boot-logback</artifactId>
+    <artifactId>demo-spring-boot</artifactId>
     <version>0.0.1</version>
-    <name>csc-spring-boot-logback</name>
-    <description>config log with java easily</description>
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
+    <name>demo-csc-spring-boot</name>
+    <description>Demo project for Spring Boot util</description>
+
     <dependencies>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
+            <groupId>com.csc.spring</groupId>
+            <artifactId>spring-boot-logback</artifactId>
+            <version>0.0.1</version>
         </dependency>
     </dependencies>
 
