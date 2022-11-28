@@ -10,6 +10,7 @@
     </parent>
 
     <modules>
+        <module>common</module>
         <module>demo-spring-boot</module>
         <module>spring-boot-logback</module>
     </modules>

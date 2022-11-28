@@ -8,26 +8,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- *
  * @description: 参数控制器
- *
  * @create: 2022/11/18
-*/
+ */
 @RestController
-@RequestMapping("api/param")
+@RequestMapping("param")
 public class ParamController {
 
-    @PostMapping("get1")
+    @GetMapping("getPath")
+    public String getPath(@PathVariable String request) {
+        return request;
+    }
+
+    @GetMapping("getParam")
+    public UserRequest getParam(UserRequest request) {
+        return request;
+    }
+
+    @PostMapping("post")
     public UserRequest getUser(@Validated @RequestBody UserRequest request) {
-        //throw new IllegalArgumentException("非法参数异常");
         return request;
     }
-
-    @GetMapping("get2")
-    public UserRequest getUser2(UserRequest request) {
-        return request;
-    }
-
 
     @PostMapping("postList")
     public List<User> postList(@RequestBody List<User> list) {
