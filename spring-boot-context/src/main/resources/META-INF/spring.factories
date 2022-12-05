@@ -1,0 +1,6 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.csc.spring.context.config.context.ContextAutoConfiguration
+org.springframework.boot.env.PropertySourceLoader=com.csc.spring.context.config.CustomPropertiesPropertySourceLoader
+#Initializers
+org.springframework.context.ApplicationContextInitializer=\
+com.csc.spring.context.ioc.IOCContext
