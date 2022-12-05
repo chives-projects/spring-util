@@ -1,4 +1,4 @@
-package com.csc.spring.context.servlet;
+package com.csc.spring.core.servlet;
 
 import org.apache.commons.io.IOUtils;
 
@@ -22,7 +22,7 @@ import java.io.*;
  * 3、@RequestBody注解支持POST/PUT/DELETE/PATCH，可以通过getInputStream和getReader获取参数
  * @Create: 2022/12/01
  */
-public class RequestWrapper extends HttpServletRequestWrapper {
+public class DecoratorRequestWrapper extends HttpServletRequestWrapper {
     /**
      * 参数字节数组
      */
@@ -32,7 +32,7 @@ public class RequestWrapper extends HttpServletRequestWrapper {
      */
     private HttpServletRequest request;
 
-    public RequestWrapper(HttpServletRequest request) {
+    public DecoratorRequestWrapper(HttpServletRequest request) {
         super(request);
         this.request = request;
     }

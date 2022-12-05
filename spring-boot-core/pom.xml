@@ -8,10 +8,10 @@
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>spring-boot-context</artifactId>
+    <artifactId>spring-boot-core</artifactId>
     <version>0.0.1</version>
-    <name>spring-boot-context</name>
-    <description>spring context module for Spring Boot</description>
+    <name>spring-boot-core</name>
+    <description>spring core module for Spring Boot</description>
     <dependencies>
         <dependency>
             <groupId>com.csc.spring</groupId>

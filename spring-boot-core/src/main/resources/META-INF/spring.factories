@@ -1,0 +1,6 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.csc.spring.core.context.config.ContextAutoConfiguration,\
+  com.csc.spring.core.servlet.FilterRegistrationBeanAutoConfiguration
+org.springframework.boot.env.PropertySourceLoader=com.csc.spring.core.env.CustomPropertiesPropertySourceLoader
+#Initializers
+org.springframework.context.ApplicationContextInitializer=com.csc.spring.core.context.IOCContext

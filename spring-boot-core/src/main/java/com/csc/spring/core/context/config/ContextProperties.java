@@ -1,4 +1,4 @@
-package com.csc.spring.context.config.context;
+package com.csc.spring.core.context.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

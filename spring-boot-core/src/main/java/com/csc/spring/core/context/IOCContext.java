@@ -1,4 +1,4 @@
-package com.csc.spring.context.ioc;
+package com.csc.spring.core.context;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -11,13 +11,18 @@ import java.lang.annotation.Annotation;
 import java.util.Map;
 
 /**
- * @description: IOC容器实例上下文，可以获取容器内部的实例对象
+ * @description: IOC容器实例上下文，可以获取容器内部的实例对象，
+ * 这里封装一些类似于utils工具类的方法，方便在非明确(用@Component,@Bean...)指定的bean中获取上下文，像spring源码的操作一样
+ * ApplicationContextInitializer是spring提供ApplicationContext容器的一个扩展点，用于对在ApplicationContext容器刷新前进行一些设置
  * @Author: csc
  * @Create: 2022/12/01
  */
 @SuppressWarnings("all")
 public class IOCContext implements ApplicationContextInitializer<ConfigurableApplicationContext>, Ordered {
 
+    /**
+     * 可以通过 CONTEXT 获取容器中的bean
+     */
     private static ApplicationContext CONTEXT;
 
 

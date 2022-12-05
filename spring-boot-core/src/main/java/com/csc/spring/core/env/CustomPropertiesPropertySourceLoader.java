@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package com.csc.spring.context.config;
+package com.csc.spring.core.env;
 
 import org.springframework.boot.env.OriginTrackedMapPropertySource;
 import org.springframework.boot.env.PropertySourceLoader;
-import org.springframework.core.annotation.Order;
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
@@ -30,8 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 重写 PropertiesPropertySourceLoader 类，系统内部的PropertiesPropertySourceLoader类的优先级是2147483647，
- * 设置@Order注解，值是2147483646，优先级比系统自带的高
+ * 重写 PropertiesPropertySourceLoader 类
  * Strategy to load '.properties' files into a {@link PropertySource}.
  *
  * @author Dave Syer
@@ -39,7 +37,6 @@ import java.util.Map;
  * @author Madhura Bhave
  * @since 1.0.0
  */
-@Order(1)
 public class CustomPropertiesPropertySourceLoader implements PropertySourceLoader {
 
     private static final String XML_FILE_EXTENSION = ".xml";
