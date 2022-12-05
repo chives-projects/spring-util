@@ -1,6 +1,6 @@
-package com.csc.spring.context.helper;
+package com.csc.spring.core.helper;
 
-import com.csc.spring.context.ioc.IOCContext;
+import com.csc.spring.core.context.IOCContext;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 /**

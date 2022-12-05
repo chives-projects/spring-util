@@ -1,9 +1,9 @@
-package com.csc.spring.context.helper;
+package com.csc.spring.core.helper;
 
 import com.csc.common.enums.ApplicationStatus;
 import com.csc.common.exception.BusinessException;
 import com.csc.common.utils.character.StrUtils;
-import com.csc.spring.context.ioc.IOCContext;
+import com.csc.spring.core.context.IOCContext;
 
 import java.text.MessageFormat;
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.csc.spring.context.config;
+package com.csc.spring.core.env;
 
 import java.io.Closeable;
 import java.io.IOException;

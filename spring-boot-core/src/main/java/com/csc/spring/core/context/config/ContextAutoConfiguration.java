@@ -1,4 +1,4 @@
-package com.csc.spring.context.config.context;
+package com.csc.spring.core.context.config;
 
 import com.csc.spring.logback.LoggerFactory;
 import org.slf4j.Logger;

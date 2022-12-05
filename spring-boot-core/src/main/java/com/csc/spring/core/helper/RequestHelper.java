@@ -1,4 +1,4 @@
-package com.csc.spring.context.helper;
+package com.csc.spring.core.helper;
 
 import com.csc.common.constant.AttributeInfo;
 import com.csc.common.constant.CharacterInfo;
@@ -8,18 +8,17 @@ import com.csc.common.exception.PrintExceptionInfo;
 import com.csc.common.utils.character.JSONUtils;
 import com.csc.common.utils.reflect.ParamNameUtils;
 import com.csc.common.utils.spring.RequestUtil;
-import com.csc.spring.context.servlet.RequestWrapper;
+import com.csc.spring.core.context.ContextHolder;
+import com.csc.spring.core.servlet.DecoratorRequestWrapper;
 import com.csc.spring.logback.LoggerFactory;
 import com.google.common.collect.Maps;
 import org.aopalliance.intercept.MethodInvocation;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
-import org.springframework.core.io.InputStreamSource;
 import org.springframework.util.Assert;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.*;
@@ -68,12 +67,12 @@ public class RequestHelper {
         try {
             Map<String, Object> paramMap = new LinkedHashMap<>();
             if (Objects.isNull(invocation)) {
-                RequestWrapper requestWrapper;
-                if (request instanceof RequestWrapper) {
-                    requestWrapper = (RequestWrapper) request;
+                DecoratorRequestWrapper requestWrapper;
+                if (request instanceof DecoratorRequestWrapper) {
+                    requestWrapper = (DecoratorRequestWrapper) request;
                 } else {
                     // 解决像shiro|security等拦截器链获取参数问题
-                    requestWrapper = new RequestWrapper(request);
+                    requestWrapper = new DecoratorRequestWrapper(request);
                     requestWrapper.getInputStream();
                 }
                 paramMap.putAll(getParameterMap(requestWrapper.getRequestBody()));
@@ -89,16 +88,7 @@ public class RequestHelper {
                 }
             }
 
-            //获取请求头
             Map<String, Object> headers = getHeaders(request);
-            //设置事务标识
-            if (Objects.isNull(headers.get(HeaderInfo.TRACE_ID.toLowerCase()))) {
-                headers.put(HeaderInfo.TRACE_ID, ContextHolder.current().getTraceId());
-            }
-            //设置登录号
-            if (Objects.isNull(headers.get(HeaderInfo.ACCOUNT_CODE.toLowerCase()))) {
-                headers.put(HeaderInfo.ACCOUNT_CODE, ContextHolder.current().getAccountCode());
-            }
 
             // 请求头
             dataMap.put(AttributeInfo.HEADERS, headers);
@@ -127,6 +117,15 @@ public class RequestHelper {
                 headers.put(name, value);
             }
         });
+
+        //设置事务标识
+        if (Objects.isNull(headers.get(HeaderInfo.TRACE_ID.toLowerCase()))) {
+            headers.put(HeaderInfo.TRACE_ID, ContextHolder.current().getTraceId());
+        }
+        //设置登录号
+        if (Objects.isNull(headers.get(HeaderInfo.ACCOUNT_CODE.toLowerCase()))) {
+            headers.put(HeaderInfo.ACCOUNT_CODE, ContextHolder.current().getAccountCode());
+        }
         return headers;
     }
 
@@ -213,26 +212,5 @@ public class RequestHelper {
             logger.error(PrintExceptionInfo.printErrorInfo(e));
         }
         return Collections.emptyMap();
-    }
-
-    /**
-     * 是否继续下一步
-     *
-     * @param value 对象值
-     * @return
-     */
-    private static boolean isFinal(Object value) {
-        if (Objects.isNull(value)) {
-            return false;
-        } else if (value instanceof HttpServletRequest) {
-            return true;
-        } else if (value instanceof HttpServletResponse) {
-            return true;
-        } else if (value instanceof InputStreamSource) {
-            //MultipartFile是InputStreamSource的实现类
-            return true;
-        } else {
-            return false;
-        }
     }
 }

@@ -1,7 +1,7 @@
-package com.csc.spring.context.helper;
+package com.csc.spring.core.helper;
 
-import com.csc.spring.context.config.context.ContextProperties;
-import com.csc.spring.context.ioc.IOCContext;
+import com.csc.spring.core.context.config.ContextProperties;
+import com.csc.spring.core.context.IOCContext;
 
 /**
  * @description: 系统编号帮助类
