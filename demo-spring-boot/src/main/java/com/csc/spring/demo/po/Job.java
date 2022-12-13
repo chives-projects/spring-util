@@ -1,5 +1,7 @@
 package com.csc.spring.demo.po;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -7,23 +9,17 @@ import java.io.Serializable;
  * @Version: 1.0
  */
 public class Job implements Serializable {
-    private Long id;
+    @NotNull(message = "id is null")
+    private Integer id;
     private Long jobNumber;
+    @NotBlank
     private String jobDesc;
 
-    public String getJobDesc() {
-        return jobDesc;
-    }
-
-    public void setJobDesc(String jobDesc) {
-        this.jobDesc = jobDesc;
-    }
-
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -33,5 +29,13 @@ public class Job implements Serializable {
 
     public void setJobNumber(Long jobNumber) {
         this.jobNumber = jobNumber;
+    }
+
+    public String getJobDesc() {
+        return jobDesc;
+    }
+
+    public void setJobDesc(String jobDesc) {
+        this.jobDesc = jobDesc;
     }
 }

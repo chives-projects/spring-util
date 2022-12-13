@@ -67,7 +67,14 @@ public class ContextHolder {
          */
         private boolean servletContext;
 
+        /**
+         * 开启时间
+         */
+        private Long startTime;
+
         public RequestHolder() {
+            //servlet请求开始时间
+            this.startTime = System.currentTimeMillis();
             setSystemNumber(SystemNumberHelper.getSystemNumber());
             setClientIp(RequestUtil.getClientIp());
             setServerIp(RequestUtil.getServerIp());
@@ -86,6 +93,14 @@ public class ContextHolder {
 
         public void setServletContext(boolean servletContext) {
             this.servletContext = servletContext;
+        }
+
+        public Long getStartTime() {
+            return startTime;
+        }
+
+        public void setStartTime(Long startTime) {
+            this.startTime = startTime;
         }
     }
 

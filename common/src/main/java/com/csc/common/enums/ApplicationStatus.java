@@ -14,9 +14,8 @@ public enum ApplicationStatus implements BaseEnums<Integer> {
     //100000所有默认异常
     EXCEPTION(100000, "网络异常，请稍后再试", "Network exception, please try again later."),
     ILLEGAL_ACCESS(100001, "非法访问", "Illegal Access"),
-    ILLEGAL_METHOD(100002, "非法方法请求", "Illegal Method Request"),
-    ILLEGAL_ARGUMENT(100003, "非法参数", "Illegal Parameter"),
-    ILLEGAL_DATA(100004, "非法数据", "Illegal Data"),
+    ILLEGAL_ARGUMENT(100002, "非法参数", "Illegal Parameter"),
+    ILLEGAL_DATA(100003, "非法数据", "Illegal Data"),
 
     //登录状态验证失败--只用于session、token
     ACCOUNT_NOT_EXIT(200003, "账号不存在", "Account does not exist."),

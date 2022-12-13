@@ -1,0 +1,8 @@
+com.csc.spring.autoconfigure.request.RequestAutoConfiguration
+com.csc.spring.autoconfigure.response.ResponseWrapperAutoConfiguration
+#com.csc.spring.autoconfigure.bean.factory.EagleBeanFactoryPostProcessorAutoConfiguration
+#com.csc.spring.autoconfigure.bean.registry.EagleBeanDefinitionRegistryAutoConfiguration
+com.csc.spring.autoconfigure.web.EagleWebMvcAutoConfiguration
+com.csc.spring.autoconfigure.exception.GlobalExceptionAutoConfiguration
+com.csc.spring.autoconfigure.converters.EagleMappingJackson2HttpMessageConverterAutoConfiguration
+#com.csc.spring.autoconfigure.tomcat.TomcatAutoConfiguration

@@ -2,6 +2,10 @@ package com.csc.spring.demo.po;
 
 import org.springframework.core.Ordered;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import java.util.List;
+
 /**
  * @description:
  * @Author :  csc
@@ -10,16 +14,10 @@ import org.springframework.core.Ordered;
 public class User implements Ordered {
     private String username = "liming";
     private String password;
-    private Job job;
+    @Valid
+    @NotEmpty
+    private List<Job> jobList;
     private int order;
-
-    public Job getJob() {
-        return job;
-    }
-
-    public void setJob(Job job) {
-        this.job = job;
-    }
 
     public String getUsername() {
         return username;
@@ -35,6 +33,18 @@ public class User implements Ordered {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Job> getJobList() {
+        return jobList;
+    }
+
+    public void setJobList(List<Job> jobList) {
+        this.jobList = jobList;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
     }
 
     @Override
