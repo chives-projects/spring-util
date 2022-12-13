@@ -90,8 +90,6 @@ public class DefaultRequestMethodInterceptor implements EagleRequest {
             ThreadPoolHelper.threadPoolTaskExecutor().submit(() -> logger.info(JSONUtils.toJSONString(baseLogger)));
             //移除线程上下文数据
             ContextHolder.unbind(true);
-            //设置耗时
-//            RequestUtil.getRequest().setAttribute(AttributeInfo.SPENT_TIME, baseLogger.getSpentTime());
         }
     }
 

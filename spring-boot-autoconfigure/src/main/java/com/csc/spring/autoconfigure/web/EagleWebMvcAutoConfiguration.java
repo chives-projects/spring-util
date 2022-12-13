@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.Objects;
 
 /**
- * @author: csc 鹰
+ * @author: csc
  * @description: webmvc自动化配置
  * @create: 2022/12/13
  */
@@ -25,17 +25,10 @@ public class EagleWebMvcAutoConfiguration implements WebMvcConfigurer, Initializ
 
     private WebProperties webProperties;
     /**
-     * 自定义路由规则是否已加载
-     */
-    private boolean enablePathMatch;
-    /**
-     * 自定义跨域规则是否已加载
-     */
-    private boolean enableCors;
-    /**
      * 忽略URL前缀的控制器类
      */
-    private static String[] ignoreUrlPrefixController = new String[]{"springfox.documentation.swagger.web.ApiResourceController",
+    private static String[] ignoreUrlPrefixController = new String[]{
+            "springfox.documentation.swagger.web.ApiResourceController",
             "org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController"};
 
     public EagleWebMvcAutoConfiguration(WebProperties webProperties) {
@@ -61,8 +54,6 @@ public class EagleWebMvcAutoConfiguration implements WebMvcConfigurer, Initializ
         //给所有的接口统一添加前缀
         configurer.addPathPrefix(webPropertiesPath.getPrefix(),
                 c -> !ArrayUtils.contains(ignoreUrlPrefixController, c.getName()) && (BooleanUtils.isTrue(webPropertiesPath.isEnableAllPrefix())));
-        enablePathMatch = true;
-
     }
 
     private AntPathMatcher getAntPathMatcher(WebProperties.Path webPropertiesPath) {
@@ -135,6 +126,5 @@ public class EagleWebMvcAutoConfiguration implements WebMvcConfigurer, Initializ
         if (Objects.nonNull(webProperties.getCors().getMaxAge())) {
             registration.maxAge(webProperties.getCors().getMaxAge());
         }
-        enableCors = true;
     }
 }

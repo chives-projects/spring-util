@@ -5,7 +5,6 @@ import com.csc.common.po.BaseResponse;
 import com.csc.common.utils.spring.MatchUtils;
 import com.csc.common.utils.spring.RequestUtil;
 import com.csc.spring.autoconfigure.response.ResponseWrapperProperties;
-import com.csc.spring.autoconfigure.response.annotation.ApiWrapperIgnore;
 import org.springframework.core.MethodParameter;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,9 +40,7 @@ public class ResponseMethodReturnValueHandler implements HandlerMethodReturnValu
         //标注该请求已经在当前处理程序处理过
         mavContainer.setRequestHandled(true);
         HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
-        if (returnType.hasMethodAnnotation(ApiWrapperIgnore.class)
-                || returnType.getContainingClass().isAnnotationPresent(ApiWrapperIgnore.class)
-                || MatchUtils.match(returnValueProperties.getExclude(), request.getRequestURI())) {
+        if (MatchUtils.match(returnValueProperties.getExclude(), request.getRequestURI())) {
             proxyObject.handleReturnValue(returnValue, returnType, mavContainer, webRequest);
         } else if (null != returnValue && (returnValue instanceof BaseResponse)) {
             BaseResponse baseResponse = (BaseResponse) returnValue;

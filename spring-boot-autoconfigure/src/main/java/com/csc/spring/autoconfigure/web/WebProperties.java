@@ -51,7 +51,7 @@ public class WebProperties {
         //设置URL末尾是否支持斜杠，默认true,如/a/b/有效，/a/b也有效
         private boolean useTrailingSlashMatch = true;
         //URL默认添加前缀
-        private String prefix = "api";
+        private String prefix = "/api";
         //忽略指定的路由,控制器全类名
         private Set<String> excludes = new HashSet<>();
 

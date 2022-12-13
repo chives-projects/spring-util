@@ -5,7 +5,6 @@ import com.csc.common.po.BaseResponse;
 import com.csc.common.utils.spring.MatchUtils;
 import com.csc.common.utils.spring.RequestUtil;
 import com.csc.spring.autoconfigure.response.ResponseWrapperProperties;
-import com.csc.spring.autoconfigure.response.annotation.ApiWrapperIgnore;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpEntity;
@@ -54,9 +53,7 @@ public class ResponseHttpEntityMethodReturnValueHandler implements HandlerMethod
             String path = ((Map) body).get("path").toString();
             BaseResponse responseData = BaseResponse.buildResponse(HttpStatus.NOT_FOUND.value(), StringUtils.join("接口【", path, "】不存在"));
             proxyObject.handleReturnValue(ResponseEntity.ok(responseData), returnType, mavContainer, webRequest);
-        } else if (returnType.hasMethodAnnotation(ApiWrapperIgnore.class)
-                || returnType.getContainingClass().isAnnotationPresent(ApiWrapperIgnore.class)
-                || MatchUtils.match(returnValueProperties.getExclude(), request.getRequestURI())) {
+        } else if (MatchUtils.match(returnValueProperties.getExclude(), request.getRequestURI())) {
             proxyObject.handleReturnValue(returnValue, returnType, mavContainer, webRequest);
         } else if (null != body && (body instanceof BaseResponse)) {
             BaseResponse baseResponse = (BaseResponse) body;
