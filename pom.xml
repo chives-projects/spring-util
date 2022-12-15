@@ -16,6 +16,7 @@
         <module>spring-boot-logback</module>
         <module>spring-boot-autoconfigure</module>
         <module>spring-http-client</module>
+        <module>spring-boot-redis</module>
     </modules>
 
     <groupId>com.csc.spring</groupId>
