@@ -1,6 +1,7 @@
 package com.csc.spring.core.context;
 
 import com.alibaba.ttl.TransmittableThreadLocal;
+import com.csc.common.constant.AttributeInfo;
 import com.csc.common.constant.HeaderInfo;
 import com.csc.common.po.BaseLogger;
 import com.csc.common.utils.UUIDUtils;
@@ -81,6 +82,8 @@ public class ContextHolder {
             if (RequestUtil.isServletContext()) {
                 setTraceId(RequestUtil.getRequest().getHeader(HeaderInfo.TRACE_ID));
                 this.servletContext = true;
+                //设置当前请求阶段标识
+                RequestUtil.getRequest().setAttribute(AttributeInfo.STAGE, Stage.REQUEST);
             }
             if (StringUtils.isEmpty(getTraceId())) {
                 setTraceId(UUIDUtils.randomSimpleUUID());

@@ -16,9 +16,11 @@ import org.aopalliance.intercept.MethodInvocation;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
+import org.springframework.core.io.InputStreamSource;
 import org.springframework.util.Assert;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.*;
@@ -205,6 +207,7 @@ public class RequestHelper {
             List<String> list = ParamNameUtils.getParamNames(method);
             Object[] obj = invocation.getArguments();
             for (int i = 0; i < list.size(); i++) {
+                if (isFinal(obj[i])) continue;
                 paramMap.put(list.get(i), obj[i]);
             }
             return paramMap;
@@ -212,5 +215,26 @@ public class RequestHelper {
             logger.error(PrintExceptionInfo.printErrorInfo(e));
         }
         return Collections.emptyMap();
+    }
+
+    /**
+     * 是否继续下一步
+     *
+     * @param value 对象值
+     * @return
+     */
+    private static boolean isFinal(Object value) {
+        if (Objects.isNull(value)) {
+            return false;
+        } else if (value instanceof HttpServletRequest) {
+            return true;
+        } else if (value instanceof HttpServletResponse) {
+            return true;
+        } else if (value instanceof InputStreamSource) {
+            //MultipartFile是InputStreamSource的实现类
+            return true;
+        } else {
+            return false;
+        }
     }
 }
