@@ -1,0 +1,2 @@
+com.eagle.spring.core.context.config.ContextAutoConfiguration
+com.eagle.spring.core.servlet.FilterRegistrationBeanAutoConfiguration

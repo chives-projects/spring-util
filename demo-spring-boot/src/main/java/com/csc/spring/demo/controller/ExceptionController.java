@@ -1,10 +1,8 @@
 package com.csc.spring.demo.controller;
 
-import com.csc.common.exception.RemoteInvokeException;
 import com.csc.spring.demo.po.Job;
 import com.csc.spring.demo.po.User;
-import com.csc.spring.logback.LoggerFactory;
-import org.slf4j.Logger;
+import com.eagle.common.exception.RemoteInvokeException;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +17,6 @@ import javax.validation.constraints.NotBlank;
 @RequestMapping("exception")
 @Validated
 public class ExceptionController {
-    private static final Logger logger = LoggerFactory.getLogger(ExceptionController.class);
 
     @GetMapping("nullPoint")
     public void test1() {

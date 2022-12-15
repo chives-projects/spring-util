@@ -1,4 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.csc.spring.logback.LogbackAutoConfiguration
 #Initializers
-org.springframework.context.ApplicationContextInitializer=\
-  com.csc.spring.logback.initializer.LogbackApplicationContextInitializer
+org.springframework.context.ApplicationContextInitializer=com.eagle.logback.LogbackApplicationContextInitializer

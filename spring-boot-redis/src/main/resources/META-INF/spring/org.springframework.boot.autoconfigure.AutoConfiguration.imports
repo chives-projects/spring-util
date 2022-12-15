@@ -1,0 +1,2 @@
+com.eagle.spring.redis.EagleRedisAutoConfiguration
+com.eagle.spring.redis.OriginalRedisAutoConfiguration

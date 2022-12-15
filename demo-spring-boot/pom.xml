@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.csc.spring</groupId>
+        <groupId>com.eagle.spring</groupId>
         <artifactId>spring-util</artifactId>
         <version>0.0.1</version>
     </parent>
@@ -15,29 +15,33 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.csc.spring</groupId>
+            <groupId>com.eagle.spring</groupId>
             <artifactId>spring-boot-logback</artifactId>
             <version>0.0.1</version>
         </dependency>
         <dependency>
-            <groupId>com.csc.spring</groupId>
+            <groupId>com.eagle.spring</groupId>
             <artifactId>spring-boot-core</artifactId>
             <version>0.0.1</version>
         </dependency>
         <dependency>
-            <groupId>com.csc.spring</groupId>
+            <groupId>com.eagle.spring</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>0.0.1</version>
         </dependency>
         <dependency>
-            <groupId>com.csc.spring</groupId>
+            <groupId>com.eagle.spring</groupId>
             <artifactId>spring-http-client</artifactId>
             <version>0.0.1</version>
         </dependency>
         <dependency>
-            <groupId>com.csc.spring</groupId>
+            <groupId>com.eagle.spring</groupId>
             <artifactId>spring-boot-redis</artifactId>
             <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 

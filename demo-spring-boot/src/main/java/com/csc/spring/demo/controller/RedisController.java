@@ -1,10 +1,9 @@
 package com.csc.spring.demo.controller;
 
-import com.csc.common.utils.character.JSONUtils;
 import com.csc.spring.demo.po.Job;
-import com.csc.spring.redis.factory.RedisDbFactory;
+import com.eagle.common.utils.character.JSONUtils;
+import com.eagle.spring.redis.factory.EagleRedisFactory;
 import com.google.common.collect.Maps;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -30,9 +29,9 @@ public class RedisController {
 
     public static final String KEY_PREFIX = "redis-key:";
 
-    @Autowired
+    @Resource
     private RedisTemplate redisTemplate;
-    @Autowired
+    @Resource
     private StringRedisTemplate stringRedisTemplate;
 
 
@@ -95,26 +94,26 @@ public class RedisController {
 
     @GetMapping("custom/{redisMark}")
     public String custom(@PathVariable String redisMark) {
-        RedisDbFactory.getStringRedisTemplate(redisMark).opsForValue().set(KEY_PREFIX + "test0", "123", 12, TimeUnit.MINUTES);
+        EagleRedisFactory.getStringRedisTemplate(redisMark).opsForValue().set(KEY_PREFIX + "test0", "123", 12, TimeUnit.MINUTES);
         Job job = new Job();
         job.setId(23);
         job.setJobDesc("desc");
         job.setJobNumber(23L);
-        RedisDbFactory.getStringRedisTemplate(redisMark).opsForValue().set(KEY_PREFIX + "test1", job.toString());
-        RedisDbFactory.getStringRedisTemplate(redisMark).opsForValue().set(KEY_PREFIX + "test2", JSONUtils.toJSONString(job));
+        EagleRedisFactory.getStringRedisTemplate(redisMark).opsForValue().set(KEY_PREFIX + "test1", job.toString());
+        EagleRedisFactory.getStringRedisTemplate(redisMark).opsForValue().set(KEY_PREFIX + "test2", JSONUtils.toJSONString(job));
 
         Map<String, Object> dataMap = Maps.newHashMap();
         dataMap.put(KEY_PREFIX + "te", 12);
         dataMap.put(KEY_PREFIX + "te2", 12);
         dataMap.put(KEY_PREFIX + "te3", "哈哈");
-        RedisDbFactory.getRedisTemplate(redisMark).opsForValue().set(KEY_PREFIX + "test3", dataMap, 1, TimeUnit.MINUTES);
-        RedisDbFactory.getRedisTemplate(redisMark).opsForValue().set(KEY_PREFIX + "test4", JSONUtils.toJSONString(dataMap));
+        EagleRedisFactory.getRedisTemplate(redisMark).opsForValue().set(KEY_PREFIX + "test3", dataMap, 1, TimeUnit.MINUTES);
+        EagleRedisFactory.getRedisTemplate(redisMark).opsForValue().set(KEY_PREFIX + "test4", JSONUtils.toJSONString(dataMap));
 
 
-        RedisDbFactory.getStringRedisTemplate(redisMark).opsForHash().put(KEY_PREFIX + "test5", "h", JSONUtils.toJSONString(job));
-        RedisDbFactory.getRedisTemplate(redisMark).opsForHash().put(KEY_PREFIX + "test5", "b", job);
-        RedisDbFactory.getRedisTemplate(redisMark).opsForHash().put(KEY_PREFIX + "test5", "h", JSONUtils.toJSONString(job));
-        RedisDbFactory.getRedisTemplate(redisMark).opsForHash().put(KEY_PREFIX + "test6", "h", dataMap);
+        EagleRedisFactory.getStringRedisTemplate(redisMark).opsForHash().put(KEY_PREFIX + "test5", "h", JSONUtils.toJSONString(job));
+        EagleRedisFactory.getRedisTemplate(redisMark).opsForHash().put(KEY_PREFIX + "test5", "b", job);
+        EagleRedisFactory.getRedisTemplate(redisMark).opsForHash().put(KEY_PREFIX + "test5", "h", JSONUtils.toJSONString(job));
+        EagleRedisFactory.getRedisTemplate(redisMark).opsForHash().put(KEY_PREFIX + "test6", "h", dataMap);
 
         return redisMark;
     }
@@ -161,7 +160,7 @@ public class RedisController {
 
                     }*/
                     System.out.println("--------roll----------");
-                    RedisDbFactory.getStringRedisTemplate("test").opsForValue().set(KEY_PREFIX + "roll_test1", "123" + System.currentTimeMillis());
+                    EagleRedisFactory.getStringRedisTemplate("test").opsForValue().set(KEY_PREFIX + "roll_test1", "123" + System.currentTimeMillis());
                 }
             }
         }).start();

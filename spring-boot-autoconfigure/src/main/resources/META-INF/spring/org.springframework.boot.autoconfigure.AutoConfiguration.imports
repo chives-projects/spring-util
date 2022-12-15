@@ -1,4 +1,4 @@
-com.csc.spring.autoconfigure.request.RequestAutoConfiguration
-com.csc.spring.autoconfigure.response.ResponseWrapperAutoConfiguration
-com.csc.spring.autoconfigure.web.EagleWebMvcAutoConfiguration
-com.csc.spring.autoconfigure.exception.GlobalExceptionAutoConfiguration
+com.eagle.spring.autoconfigure.request.RequestAutoConfiguration
+com.eagle.spring.autoconfigure.response.ResponseWrapperAutoConfiguration
+com.eagle.spring.autoconfigure.web.EagleWebMvcAutoConfiguration
+com.eagle.spring.autoconfigure.exception.GlobalExceptionAutoConfiguration

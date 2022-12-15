@@ -1,17 +1,17 @@
 package com.csc.spring.demo.controller;
 
-import com.csc.common.po.BaseResponse;
-import com.csc.common.utils.character.JSONUtils;
-import com.csc.spring.httpclient.annotation.TargetHttpTimeout;
-import com.csc.spring.httpclient.context.HttpContextHolder;
+import com.eagle.common.po.BaseResponse;
+import com.eagle.common.utils.character.JSONUtils;
+import com.eagle.httpclient.annotation.TargetHttpTimeout;
+import com.eagle.httpclient.context.HttpContextHolder;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.http.client.config.RequestConfig;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("http")
 @RestController
 public class HttpClientController {
-    @Autowired
+    @Resource
     private RestTemplate restTemplate;
 
     @GetMapping("get1")

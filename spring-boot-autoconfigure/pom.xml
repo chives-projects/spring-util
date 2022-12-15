@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.csc.spring</groupId>
+        <groupId>com.eagle.spring</groupId>
         <artifactId>spring-util</artifactId>
         <version>0.0.1</version>
     </parent>
@@ -14,7 +14,7 @@
     <description>spring-boot-starter for Spring Boot</description>
     <dependencies>
         <dependency>
-            <groupId>com.csc.spring</groupId>
+            <groupId>com.eagle.spring</groupId>
             <artifactId>spring-boot-core</artifactId>
             <version>0.0.1</version>
         </dependency>
