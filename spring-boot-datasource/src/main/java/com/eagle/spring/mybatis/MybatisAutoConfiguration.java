@@ -1,0 +1,91 @@
+package com.eagle.spring.mybatis;
+
+import com.eagle.common.InitializingAutoConfig;
+import com.eagle.spring.core.aop.AopOrderInfo;
+import com.eagle.spring.mybatis.interceptor.DefaultMybatisMethodInterceptor;
+import com.eagle.spring.mybatis.interceptor.MybatisCustomizer;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.aop.Advisor;
+import org.springframework.aop.Pointcut;
+import org.springframework.aop.support.ComposablePointcut;
+import org.springframework.aop.support.DefaultPointcutAdvisor;
+import org.springframework.aop.support.annotation.AnnotationMatchingPointcut;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Role;
+
+/**
+ * @Description: 控制器切点配置
+ * @Author: csc
+ * @create: 2023/01/06
+ */
+@Role(BeanDefinition.ROLE_INFRASTRUCTURE)
+@AutoConfiguration
+@EnableConfigurationProperties(MybatisProperties.class)
+@ConditionalOnProperty(prefix = MybatisProperties.PREFIX, name = "enabled", havingValue = "true", matchIfMissing = true)
+public class MybatisAutoConfiguration implements BeanFactoryPostProcessor, InitializingAutoConfig {
+
+    /**
+     * Mybatis请求日志拦截切面增强类
+     * checkInherited:是否验证父类或接口集成的注解，如果注解用@Inherited标注则自动集成
+     *
+     * @return 组合切面增强类
+     * @since 4.0.5
+     */
+    @Bean
+    @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
+    public Advisor mybatisLogAdvisor(ObjectProvider<MybatisCustomizer> mybatisCustomizers, MybatisProperties properties) {
+        //限定类级别的切点
+        Pointcut cpc = new AnnotationMatchingPointcut(Mapper.class, properties.isCheckInherited());
+        //限定方法级别的切点
+        Pointcut mpc = new AnnotationMatchingPointcut(null, Mapper.class, properties.isCheckInherited());
+        //组合切面(并集)，即只要有一个切点的条件符合，则就拦截
+        Pointcut pointcut = new ComposablePointcut(cpc).union(mpc);
+        //mybatis日志拦截切面
+//        MethodInterceptor interceptor = mybatisCustomizers.orderedStream().findFirst().get();
+        //切面增强类
+//        AnnotationPointcutAdvisor advisor = new AnnotationPointcutAdvisor(interceptor, pointcut);
+        //切面优先级顺序
+//        advisor.setOrder(AopOrderInfo.MYBATIS);
+
+
+        DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor();
+        advisor.setPointcut(pointcut);
+        advisor.setAdvice(mybatisCustomizers.orderedStream().findFirst().get());
+//        AnnotationPointcutAdvisor advisor = new AnnotationPointcutAdvisor(customizers.orderedStream().findFirst().get(), pointcut);
+        //切面优先级顺序
+        advisor.setOrder(AopOrderInfo.MYBATIS);
+
+        return advisor;
+    }
+
+    @Bean
+    @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
+    @ConditionalOnMissingBean
+    public MybatisCustomizer mybatisCustomizer() {
+        return new DefaultMybatisMethodInterceptor();
+    }
+
+    /**
+     * 将指定的bean 角色标记为基础设施类型，相关提示类在 org.springframework.context.support.PostProcessorRegistrationDelegate
+     *
+     * @param beanFactory
+     * @throws BeansException
+     */
+    @Override
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+        String[] beanNames = beanFactory.getBeanNamesForType(MybatisProperties.class);
+        if (beanNames.length > 0 && beanFactory.containsBeanDefinition(beanNames[0])) {
+            BeanDefinition beanDefinition = beanFactory.getBeanDefinition(beanNames[0]);
+            beanDefinition.setRole(BeanDefinition.ROLE_INFRASTRUCTURE);
+        }
+    }
+}

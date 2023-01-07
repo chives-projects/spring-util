@@ -15,7 +15,22 @@ public class AopOrderInfo {
      * API请求拦截器的加载顺序
      */
     public static final int REQUEST_INTERCEPTOR = 410;
-
+    /**
+     * Mybatis日志漆面
+     */
+    public static final int MYBATIS = 850;
+    /**
+     * MYBATIS拦截器
+     */
+    public static final int MYBATIS_INTERCEPTOR = 852;
+    /**
+     * 数据源切面
+     */
+    public static final int DATASOURCE = 900;
+    /**
+     * 数据库AOP切面拦截器
+     */
+    public static final int DATASOURCE_INTERCEPTOR = 910;
     /**
      * RestTemplate请求超时设置拦截器
      */

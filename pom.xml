@@ -12,9 +12,10 @@
     <modules>
         <module>common</module>
         <module>demo-spring-boot</module>
-        <module>spring-boot-core</module>
-        <module>spring-boot-logback</module>
         <module>spring-boot-autoconfigure</module>
+        <module>spring-boot-core</module>
+        <module>spring-boot-datasource</module>
+        <module>spring-boot-logback</module>
         <module>spring-http-client</module>
         <module>spring-boot-redis</module>
     </modules>

@@ -1,0 +1,2 @@
+com.eagle.spring.datasource.DataSourceAutoConfiguration
+com.eagle.spring.mybatis.MybatisAutoConfiguration

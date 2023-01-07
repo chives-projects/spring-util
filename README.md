@@ -15,3 +15,5 @@ spring-boot-autoconfigure:全局异常、请求日志、响应体包装、跨域
 spring-http-client:http-client 的配置
 
 spring-boot-redis: redis 多数据源的配置
+
+spring-boot-datasource: mybatis druid 多数据源的配置

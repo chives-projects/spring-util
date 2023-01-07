@@ -10,14 +10,23 @@ import java.util.List;
  * @description:
  * @Author :  csc
  * @create: 2022/11/18
-*/
+ */
 public class User implements Ordered {
+    private int id;
     private String username = "liming";
     private String password;
     @Valid
     @NotEmpty
     private List<Job> jobList;
     private int order;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
