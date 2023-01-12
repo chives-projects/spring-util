@@ -44,6 +44,7 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
+        <!-- database -->
         <dependency>
             <groupId>com.eagle.spring</groupId>
             <artifactId>spring-boot-datasource</artifactId>

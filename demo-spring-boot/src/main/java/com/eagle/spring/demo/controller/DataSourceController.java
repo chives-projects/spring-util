@@ -1,9 +1,9 @@
-package com.csc.spring.demo.controller;
+package com.eagle.spring.demo.controller;
 
-import com.csc.spring.demo.mapper.mysql.UserMapper;
-import com.csc.spring.demo.po.User;
-import com.csc.spring.demo.service.OracleService;
-import com.csc.spring.demo.service.UserService;
+import com.eagle.spring.demo.mapper.mysql.UserMapper;
+import com.eagle.spring.demo.po.User;
+import com.eagle.spring.demo.service.OracleService;
+import com.eagle.spring.demo.service.UserService;
 import com.eagle.spring.datasource.interceptor.TargetDataSource;
 import com.eagle.spring.datasource.support.helper.SqlSessionFactoryHelper;
 import com.google.common.collect.Lists;

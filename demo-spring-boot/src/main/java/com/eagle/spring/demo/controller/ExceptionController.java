@@ -1,7 +1,7 @@
-package com.csc.spring.demo.controller;
+package com.eagle.spring.demo.controller;
 
-import com.csc.spring.demo.po.Job;
-import com.csc.spring.demo.po.User;
+import com.eagle.spring.demo.po.Job;
+import com.eagle.spring.demo.po.User;
 import com.eagle.common.exception.RemoteInvokeException;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

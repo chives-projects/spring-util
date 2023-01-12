@@ -1,8 +1,8 @@
-package com.csc.spring.demo.service.impl;
+package com.eagle.spring.demo.service.impl;
 
-import com.csc.spring.demo.mapper.mysql.UserMapper;
-import com.csc.spring.demo.po.User;
-import com.csc.spring.demo.service.UserService;
+import com.eagle.spring.demo.mapper.mysql.UserMapper;
+import com.eagle.spring.demo.po.User;
+import com.eagle.spring.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

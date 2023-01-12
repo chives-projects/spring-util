@@ -1,4 +1,4 @@
-package com.csc.spring.demo.controller;
+package com.eagle.spring.demo.controller;
 
 import com.eagle.logback.EagleLoggerFactory;
 import lombok.extern.slf4j.Slf4j;

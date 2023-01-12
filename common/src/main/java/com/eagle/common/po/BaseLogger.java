@@ -4,7 +4,6 @@ import com.eagle.common.enums.ApplicationStatus;
 
 /**
  * @Description: 日志基类
- * @Package: com.csc.spring.common.po.BaseLog
  * @Author: csc
  * @create: 2022/11/24
  * @Version: 1.0

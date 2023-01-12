@@ -38,7 +38,7 @@ public class LogbackConsoleAppenderImpl extends AbstractAppender {
         appender.setContext(this.getLoggerContext());
         //appender的name属性
         appender.setName(this.getAppenderName(level));
-        //添加过滤器
+        //添加过滤器,这个level 覆盖了logging.level.com.eagle=debug中的level
         appender.addFilter(LogbackFilter.getThresholdLevelFilter(level));
         //设置编码
         appender.setEncoder(LogbackEncoder.getPatternLayoutEncoder(this.getLoggerContext(), this.getPattern()));

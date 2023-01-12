@@ -1,6 +1,6 @@
-package com.csc.spring.demo.mapper.mysql;
+package com.eagle.spring.demo.mapper.mysql;
 
-import com.csc.spring.demo.po.User;
+import com.eagle.spring.demo.po.User;
 import com.eagle.spring.datasource.interceptor.TargetDataSource;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

@@ -1,8 +1,8 @@
-package com.csc.spring.demo.service.impl;
+package com.eagle.spring.demo.service.impl;
 
-import com.csc.spring.demo.mapper.oracle.MyOracleMapper;
-import com.csc.spring.demo.mapper.oracle.OracleMapper;
-import com.csc.spring.demo.service.OracleService;
+import com.eagle.spring.demo.mapper.oracle.MyOracleMapper;
+import com.eagle.spring.demo.mapper.oracle.OracleMapper;
+import com.eagle.spring.demo.service.OracleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

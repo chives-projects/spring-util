@@ -1,4 +1,4 @@
-package com.csc.spring.demo.controller;
+package com.eagle.spring.demo.controller;
 
 import com.eagle.common.po.BaseResponse;
 import com.eagle.common.utils.character.JSONUtils;

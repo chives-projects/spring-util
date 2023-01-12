@@ -1,4 +1,4 @@
-package com.csc.spring.demo.service;
+package com.eagle.spring.demo.service;
 
 public interface OracleService {
     String getOracle();

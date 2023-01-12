@@ -4,12 +4,12 @@ import com.eagle.common.constant.HeaderInfo;
 import com.eagle.common.po.BaseLogger;
 import com.eagle.common.utils.character.ExceptionUtils;
 import com.eagle.common.utils.character.JSONUtils;
-import com.eagle.logback.EagleLoggerFactory;
 import com.eagle.spring.core.aop.AopOrderInfo;
 import com.eagle.spring.core.context.ContextHolder;
 import com.eagle.spring.core.helper.RequestHelper;
 import com.eagle.spring.core.helper.ThreadPoolHelper;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpResponse;
@@ -23,7 +23,7 @@ import java.io.IOException;
  * @create: 2022/12/14
  */
 public class DefaultHttpClientInterceptor implements HttpClientCustomizer {
-    private static final Logger logger = EagleLoggerFactory.getModuleLogger(DefaultHttpClientInterceptor.class, "third", "info");
+    private static final Logger logger = LoggerFactory.getLogger(DefaultHttpClientInterceptor.class);
 
     /**
      * RestTemplate拦截方法

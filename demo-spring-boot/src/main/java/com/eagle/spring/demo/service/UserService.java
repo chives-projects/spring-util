@@ -1,6 +1,6 @@
-package com.csc.spring.demo.service;
+package com.eagle.spring.demo.service;
 
-import com.csc.spring.demo.po.User;
+import com.eagle.spring.demo.po.User;
 
 /**
  * @Description:

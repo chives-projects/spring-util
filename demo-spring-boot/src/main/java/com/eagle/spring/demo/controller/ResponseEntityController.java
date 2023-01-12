@@ -1,6 +1,6 @@
-package com.csc.spring.demo.controller;
+package com.eagle.spring.demo.controller;
 
-import com.csc.spring.demo.po.User;
+import com.eagle.spring.demo.po.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

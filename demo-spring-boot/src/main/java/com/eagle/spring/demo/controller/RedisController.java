@@ -1,6 +1,6 @@
-package com.csc.spring.demo.controller;
+package com.eagle.spring.demo.controller;
 
-import com.csc.spring.demo.po.Job;
+import com.eagle.spring.demo.po.Job;
 import com.eagle.common.utils.character.JSONUtils;
 import com.eagle.spring.redis.factory.EagleRedisFactory;
 import com.google.common.collect.Maps;

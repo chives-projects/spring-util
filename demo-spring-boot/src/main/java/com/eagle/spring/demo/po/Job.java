@@ -1,4 +1,4 @@
-package com.csc.spring.demo.po;
+package com.eagle.spring.demo.po;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
