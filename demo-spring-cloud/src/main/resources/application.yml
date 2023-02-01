@@ -1,0 +1,21 @@
+server:
+  # 优雅停机
+  shutdown: graceful
+  http:
+    # 是否开启http端口号
+    enabled: false
+    # http端口号
+    port: 9001
+---
+spring:
+  profiles:
+    active: logback,context,config,httpclient,redis,druid,datasource,actuator,feign
+  cloud:
+    compatibility-verifier:
+      enabled: true
+
+---
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(%5p) [%15.15t] %clr(%-40.40logger{39}:%4.4line){cyan} : %m%n%wEx'
+
